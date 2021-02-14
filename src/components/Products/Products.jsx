@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, Card, CardContent, Typography } from "@material-ui/core";
 import Product from "./Product/Product";
 import SearchBar from "material-ui-search-bar";
 
@@ -20,17 +20,23 @@ export default function Products() {
   return (
     <main className={classes.content}>
       <div className={classes.toolbar} />
-      <SearchBar
-        value={searchTerm}
-        onChange={(val) => setSearchTerm(val)}
-      />
+      <SearchBar value={searchTerm} onChange={(val) => setSearchTerm(val)} className={classes.searchbar}/>
       <br />
-      <Grid container justify="center" spacing={4}>
-        {dynamicSearch().map((product) => (
-          <Grid item key={product.id} lg={12}>
-            <Product product={product} />
-          </Grid>
-        ))}
+      <Grid container spacing={3}>
+        <Grid item container justify="center" spacing={3} lg={10}>
+          {dynamicSearch().map((product) => (
+            <Grid item key={product.id} lg={12}>
+              <Product product={product} />
+            </Grid>
+          ))}
+        </Grid>
+        <Grid item container lg={2}>
+          <Card className={classes.filtersection}>
+            <CardContent>
+              <Typography variant="h5" >Filter</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
       </Grid>
     </main>
   );

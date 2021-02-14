@@ -10,4 +10,11 @@ export default makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  searchbar: {
+    width: '98.7%',
+  },
+  filtersection: {
+    width: '100%',
+    height: '700px',
+  }
 }));
