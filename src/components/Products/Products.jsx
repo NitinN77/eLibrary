@@ -1,26 +1,71 @@
 import React, { useState } from "react";
-import { Grid, Card, CardContent, Typography, FormControl, FormGroup, FormControlLabel, Checkbox, FormLabel } from "@material-ui/core";
+import {
+  Grid,
+  Card,
+  CardContent,
+  Typography,
+  FormControl,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+  FormLabel,
+} from "@material-ui/core";
 import Product from "./Product/Product";
 import SearchBar from "material-ui-search-bar";
 
 import useStyles from "./styles";
 import { useStateValue } from "../../StateProvider";
 
+const categories = [
+  "AI/ML",
+  "OOP",
+  "Guide Book",
+  "Python",
+  "C/C++",
+  "Programming",
+  "Mathematics",
+  "Data Structures and Algorithms",
+  "Javascript",
+  "CSS",
+  "HTML",
+];
+
 export default function Products() {
   const [{ products }] = useStateValue();
   const classes = useStyles();
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedtags, setSelectedTags] = useState([]);
 
   const dynamicSearch = () => {
-    return products.filter((product) =>
-      product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    return products.filter((product) => {
+      if (searchTerm) {
+        return product.name.toLowerCase().includes(searchTerm.toLowerCase());
+      }
+      else {
+        const cats = product.categories.map(cat => cat.name).sort().join('')
+        return cats.toLowerCase().includes(selectedtags.sort().join('').toLowerCase());
+      }
+    }
     );
   };
+
+  const handlefilterchange = (cat) => {
+    if (selectedtags.includes(cat)) {
+      setSelectedTags(selectedtags.filter(tag => tag !== cat))
+    }
+    else {
+      setSelectedTags([...selectedtags, cat])
+    }
+  }
 
   return (
     <main className={classes.content}>
       <div className={classes.toolbar} />
-      <SearchBar value={searchTerm} onChange={(val) => setSearchTerm(val)} className={classes.searchbar}/>
+      <SearchBar
+        value={searchTerm}
+        onChange={(val) => setSearchTerm(val)}
+        className={classes.searchbar}
+      />
       <br />
       <Grid container spacing={3}>
         <Grid item container justify="center" spacing={3} lg={10}>
@@ -34,20 +79,16 @@ export default function Products() {
           <Card className={classes.filtersection}>
             <CardContent>
               <FormControl component="fieldset" className={classes.formControl}>
-                <FormLabel component="legend">Assign responsibility</FormLabel>
+                <FormLabel component="legend" style={{paddingBottom: '15px'}}>
+                  <Typography variant="h5">Filter by Tags</Typography>
+                </FormLabel>
                 <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox onChange={()=>{}} name="gilad" />}
-                    label="Gilad Gray"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox onChange={()=>{}} name="jason" />}
-                    label="Jason Killian"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox onChange={()=>{}} name="antoine" />}
-                    label="Antoine Llorca"
-                  />
+                  {categories.map((cat) => (
+                    <FormControlLabel
+                      control={<Checkbox onChange={() => handlefilterchange(cat)}/>}
+                      label={cat}
+                    />
+                  ))}
                 </FormGroup>
               </FormControl>
             </CardContent>
