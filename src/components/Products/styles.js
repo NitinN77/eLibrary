@@ -16,5 +16,8 @@ export default makeStyles((theme) => ({
   filtersection: {
     width: '100%',
     height: '700px',
-  }
+  },
+  formControl: {
+    margin: theme.spacing(2),
+  },
 }));

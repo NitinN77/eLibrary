@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Card, CardContent, Typography } from "@material-ui/core";
+import { Grid, Card, CardContent, Typography, FormControl, FormGroup, FormControlLabel, Checkbox, FormLabel } from "@material-ui/core";
 import Product from "./Product/Product";
 import SearchBar from "material-ui-search-bar";
 
@@ -33,7 +33,23 @@ export default function Products() {
         <Grid item container lg={2}>
           <Card className={classes.filtersection}>
             <CardContent>
-              <Typography variant="h5" >Filter</Typography>
+              <FormControl component="fieldset" className={classes.formControl}>
+                <FormLabel component="legend">Assign responsibility</FormLabel>
+                <FormGroup>
+                  <FormControlLabel
+                    control={<Checkbox onChange={()=>{}} name="gilad" />}
+                    label="Gilad Gray"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox onChange={()=>{}} name="jason" />}
+                    label="Jason Killian"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox onChange={()=>{}} name="antoine" />}
+                    label="Antoine Llorca"
+                  />
+                </FormGroup>
+              </FormControl>
             </CardContent>
           </Card>
         </Grid>
