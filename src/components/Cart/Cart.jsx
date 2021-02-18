@@ -46,7 +46,7 @@ function Cart() {
             color="secondary"
             onClick={handleEmptyCart}
           >
-            Clear Cart
+            Clear Basket
           </Button>
           <Button
             component={Link}
@@ -72,7 +72,7 @@ function Cart() {
     <Container>
       <div className={classes.toolbar} />
       <Typography className={classes.title} variant="h3" gutterBottom>
-        Your Cart
+        Your Basket
       </Typography>
       {!cart.line_items ? <EmptyCart /> : <FilledCart />}
     </Container>

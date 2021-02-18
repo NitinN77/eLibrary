@@ -4,18 +4,29 @@ import { Elements, CardElement, ElementsConsumer } from '@stripe/react-stripe-js
 import { loadStripe } from '@stripe/stripe-js';
 import Review from './Review';
 import { useStateValue } from '../../StateProvider';
+import { db } from '../../firebase';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 function PaymentForm({ shippingData, backStep, onCaptureCheckout, nextStep }) {
 
-    const [{ checkoutToken }] = useStateValue();
+    const [{ checkoutToken, user }] = useStateValue();
     
     const handleSubmit = async (event, elements, stripe) => {
         event.preventDefault();
         if (!stripe || !elements) return;
         const cardElement = elements.getElement(CardElement);
         const { error, paymentMethod } = await stripe.createPaymentMethod({ type: 'card', card: cardElement});
+        console.log(checkoutToken.live.line_items);
+
+        db
+        .collection('users')
+        .doc(user.email)
+        .set({
+            books: checkoutToken.live.line_items,
+        })
+    
+
         if (error) {
             console.log(error);
         }
@@ -39,11 +50,11 @@ function PaymentForm({ shippingData, backStep, onCaptureCheckout, nextStep }) {
                     }
                 }
             }
+            console.log(orderData);
             onCaptureCheckout(checkoutToken.id, orderData);
             nextStep();
         }
     }
-
     return (
         <>
         <Review />

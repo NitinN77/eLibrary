@@ -7,7 +7,7 @@ import {
   Typography,
   Button,
 } from "@material-ui/core";
-import { ShoppingCart } from "@material-ui/icons";
+import { ShoppingBasket } from "@material-ui/icons";
 import { useStateValue } from "../../StateProvider";
 import logo from "../../assets/navlogo.svg";
 import { Link, useLocation } from "react-router-dom";
@@ -48,7 +48,7 @@ function Navbar() {
                 color="inherit"
               >
                 <Badge badgeContent={cart ? cart.total_items : 0} color="secondary">
-                  <ShoppingCart />
+                  <ShoppingBasket />
                 </Badge>
               </IconButton>
               

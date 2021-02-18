@@ -6,7 +6,6 @@ import { Products, Navbar, Cart, Checkout, Login } from "./components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignUp from './components/SignUp/SignUp';
 import { auth } from './firebase';
-import { Hidden } from "@material-ui/core";
 
 function App() {
   const [,dispatch] = useStateValue();
