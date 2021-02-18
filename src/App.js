@@ -5,10 +5,11 @@ import { Products, Navbar, Cart, Checkout, Login } from "./components";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignUp from './components/SignUp/SignUp';
-import { auth } from './firebase';
+import { auth, db } from './firebase';
+import Borrowed from "./components/Borrowed/Borrowed";
 
 function App() {
-  const [,dispatch] = useStateValue();
+  const [{user}, dispatch] = useStateValue();
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
   
@@ -27,6 +28,13 @@ function App() {
     dispatch({type: 'SET_CART', data: newCart});
   }
 
+  const fetchBorrowed = async () => {
+    if (user) {
+      const rdata = await db.collection('users').doc(user.email).get();
+      dispatch({type: 'SET_BORROWED', data: rdata.data().books});
+    }
+  }
+
   const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
     try {
       const incomingOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
@@ -40,7 +48,6 @@ function App() {
 
   useEffect(() => {
     fetchProducts();
-    fetchCart();
     auth.onAuthStateChanged(authUser => {
       console.log('USER IS', authUser);
       if (authUser) {
@@ -50,7 +57,9 @@ function App() {
         dispatch({ type: 'SET_USER', data: null});
       }
     })
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    fetchCart();
+    fetchBorrowed();
+  }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Router>
@@ -62,6 +71,9 @@ function App() {
           </Route>
           <Route exact path="/cart">
             <Cart />
+          </Route>
+          <Route exact path="/borrowed">
+            <Borrowed />
           </Route>
           <Route exact path="/checkout">
             <Checkout order={order} onCaptureCheckout={handleCaptureCheckout}

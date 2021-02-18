@@ -3,6 +3,7 @@ export const initialState = {
     cart: [],
     checkoutToken: null,
     user: null,
+    borrowed : [],
 };
 
 const reducer = (state, action) => {
@@ -26,6 +27,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 user: action.data,
+            }
+        case 'SET_BORROWED':
+            return {
+                ...state,
+                borrowed: action.data,
             }
         default:
             return {

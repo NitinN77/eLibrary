@@ -7,7 +7,7 @@ import {
   Typography,
   Button,
 } from "@material-ui/core";
-import { ShoppingBasket } from "@material-ui/icons";
+import { ShoppingBasket, Book } from "@material-ui/icons";
 import { useStateValue } from "../../StateProvider";
 import logo from "../../assets/navlogo.svg";
 import { Link, useLocation } from "react-router-dom";
@@ -18,7 +18,7 @@ import useStyles from "./styles";
 function Navbar() {
   const classes = useStyles();
   const location = useLocation();
-  const [{ cart, user }] = useStateValue();
+  const [{ cart, user, borrowed }] = useStateValue();
 
   const handleSignOut = () => {
     auth.signOut();
@@ -49,6 +49,16 @@ function Navbar() {
               >
                 <Badge badgeContent={cart ? cart.total_items : 0} color="secondary">
                   <ShoppingBasket />
+                </Badge>
+              </IconButton>
+              <IconButton
+                component={Link}
+                to="/borrowed"
+                aria-label="show cart items"
+                color="inherit"
+              >
+                <Badge badgeContent={borrowed.length} color="secondary">
+                  <Book />
                 </Badge>
               </IconButton>
               
