@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { commerce } from "./lib/commerce";
 import { useStateValue } from "./StateProvider";
 import { Products, Navbar, Cart, Checkout, Login } from "./components";
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignUp from './components/SignUp/SignUp';
 import { auth, db } from './firebase';
@@ -32,6 +31,7 @@ function App() {
     if (user) {
       const rdata = await db.collection('users').doc(user.email).get();
       dispatch({type: 'SET_BORROWED', data: rdata.data().books});
+      console.log("BORROWED FETCH: ",rdata.data().books);
     }
   }
 
@@ -45,9 +45,7 @@ function App() {
     }
   }
 
-
   useEffect(() => {
-    fetchProducts();
     auth.onAuthStateChanged(authUser => {
       console.log('USER IS', authUser);
       if (authUser) {
@@ -57,9 +55,14 @@ function App() {
         dispatch({ type: 'SET_USER', data: null});
       }
     })
-    fetchCart();
     fetchBorrowed();
-  }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [user])
+
+
+  useEffect(() => {
+    fetchProducts();
+    fetchCart();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Router>

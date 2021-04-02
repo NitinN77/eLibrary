@@ -7,7 +7,7 @@ function Borrowed() {
     const [{ borrowed }] = useStateValue();
 
     return (
-        <div style={{'margin-top': '200px'}}>
+        <div style={{'marginTop': '200px'}}>
             {borrowed.map(book => book.name)}
         </div>
     )
