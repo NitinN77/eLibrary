@@ -20,6 +20,8 @@ import SpeechRecognition, {
 } from "react-speech-recognition";
 import { IconButton, Badge } from "@material-ui/core";
 import { Mic, MicNone, Replay } from "@material-ui/icons";
+import { commerce } from "../../lib/commerce";
+import { useHistory } from 'react-router-dom';
 
 const categories = [
   "AI/ML",
@@ -36,7 +38,8 @@ const categories = [
 ];
 
 export default function Products() {
-  const [{ products }] = useStateValue();
+  let history = useHistory();
+  const [{ products }, dispatch] = useStateValue();
   const classes = useStyles();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedtags, setSelectedTags] = useState([]);
@@ -78,21 +81,34 @@ export default function Products() {
 
   const commands = [
     {
-      command: "open *",
-      callback: (website) => {
-        window.open("https://" + website.split(" ").join(""));
+      command: "filter by *",
+      callback: (filter) => {
+        handlefilterchange(filter);
       },
     },
     {
-      command: "filter by *",
-      callback: (filter) => {
-        setSearchTerm(filter);
+      command: "clear cart",
+      callback: async () => {
+        const { cart } = await commerce.cart.empty();
+        dispatch({type: 'SET_CART', data: cart});
+        alert("Cart Cleared")
+      },
+    },
+    {
+      command: "show borrowed",
+      callback: () => {
+        history.push('/borrowed')
+      },
+    },
+    {
+      command: "clear filters",
+      callback: () => {
+        setSelectedTags([])
       },
     },
   ];
 
   const { transcript } = useSpeechRecognition({ commands });
-  const [redirectUrl, setRedirectUrl] = useState("");
 
   return (
     <main className={classes.content}>
@@ -102,12 +118,13 @@ export default function Products() {
         onChange={(val) => setSearchTerm(val)}
         className={classes.searchbar}
       />
-      <div className="va">
+      <div style={{marginTop: '15px'}}>
         <IconButton color="inherit" onClick={() => {handleListening()}}>
           <Badge>
             {listening ? <Mic /> : <MicNone />}
           </Badge>
         </IconButton>
+        {transcript}
       </div>
       <br />
       <Grid container spacing={3}>
