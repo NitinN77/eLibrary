@@ -22,6 +22,7 @@ import { IconButton, Badge } from "@material-ui/core";
 import { Mic, MicNone, Replay } from "@material-ui/icons";
 import { commerce } from "../../lib/commerce";
 import { useHistory } from 'react-router-dom';
+import { useSpeechSynthesis } from 'react-speech-kit';
 
 const categories = [
   "AI/ML",
@@ -44,6 +45,8 @@ export default function Products() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedtags, setSelectedTags] = useState([]);
   const [listening, setListening] = useState(false);
+
+  const { speak } = useSpeechSynthesis();
 
   const dynamicSearch = () => {
     return products.filter((product) => {
@@ -84,6 +87,7 @@ export default function Products() {
       command: "filter by *",
       callback: (filter) => {
         handlefilterchange(filter);
+        speak({ text: `Filtered by ${filter}`});
       },
     },
     {
@@ -91,19 +95,22 @@ export default function Products() {
       callback: async () => {
         const { cart } = await commerce.cart.empty();
         dispatch({type: 'SET_CART', data: cart});
-        alert("Cart Cleared")
+        speak({ text: "Cart has been cleared"});
       },
     },
     {
       command: "show borrowed",
       callback: () => {
         history.push('/borrowed')
+        speak({ text: "Here are the books you have currently borrowed"});
       },
     },
     {
       command: "clear filters",
       callback: () => {
         setSelectedTags([])
+        speak({ text: "Filters cleared"});
+
       },
     },
   ];
