@@ -1,6 +1,6 @@
 # eLibrary
 
-### An e-library with a voice assistant built to help students borrow textbooks from an online library when physical access is not an option due to the pandemic.
+### An e-library with a voice assistant, built to help students borrow textbooks from an online library when physical access is not an option due to the ongoing pandemic
 
 ### Technologies Used:
 
@@ -12,7 +12,7 @@ Material UI
 
 Firebase 
 
-react-seech-recognition
+react-speech-recognition
 
 react-speech
 
