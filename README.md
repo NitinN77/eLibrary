@@ -12,7 +12,9 @@ Material UI
 
 Firebase 
 
-React-Speech-Recognition
+react-seech-recognition
+
+react-speech
 
 
 ![](https://i.imgur.com/zeZxCIC.png)
