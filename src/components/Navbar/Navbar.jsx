@@ -31,15 +31,15 @@ function Navbar() {
           <Typography
             component={Link}
             to="/"
-            variant="h4"
+            variant="h3"
             className={classes.title}
             color="inherit"
           >
-            <img src={logo} alt="" height="25px" className={classes.image} />
+            <img src={logo} alt="" height="60px" className={classes.image} />
             eLibrary
           </Typography>
           <div className={classes.grow} />
-          {location.pathname === "/" && (
+          {location.pathname === "/library" && (
             <div className={classes.button}>
               <IconButton
                 component={Link}

@@ -7,6 +7,7 @@ import SignUp from "./components/SignUp/SignUp";
 
 import { auth, db } from "./firebase";
 import Borrowed from "./components/Borrowed/Borrowed";
+import HomePage from "./components/HomePage/HomePage";
 
 
 
@@ -33,8 +34,10 @@ function App() {
   const fetchBorrowed = async () => {
     if (user) {
       const rdata = await db.collection("users").doc(user.email).get();
-      dispatch({ type: "SET_BORROWED", data: rdata.data().books });
-      console.log("BORROWED FETCH: ", rdata.data().books);
+      if(rdata.data()){
+        dispatch({ type: "SET_BORROWED", data: rdata.data().books });
+
+      }
     }
   };
 
@@ -74,9 +77,11 @@ function App() {
     <Router>
       <div className="maindivs">
         <Navbar />
-
         <Switch>
           <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route exact path="/library">
             <Products />
           </Route>
           <Route exact path="/cart">
