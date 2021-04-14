@@ -5,15 +5,27 @@ import CartItem from "./CartItem/CartItem";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../../StateProvider";
 import { commerce } from "../../lib/commerce";
+import { db } from '../../firebase'
+import { useHistory } from 'react-router-dom';
 
 function Cart() {
-  const [{ cart }, dispatch ] = useStateValue();
+  const [{ cart, user, checkoutToken }, dispatch ] = useStateValue();
   const classes = useStyles();
-
+  let history = useHistory();
   const handleEmptyCart = async () => {
     const { cart } = await commerce.cart.empty();
     dispatch({type: 'SET_CART', data: cart});
   };
+
+  const handlesubmit = () => {
+    db
+    .collection('users')
+    .doc(user.email)
+    .set({
+        books: cart.line_items,
+    })
+    history.push('/library')
+  }
 
   const EmptyCart = () => (
     <Typography variant="subtitle1">
@@ -35,7 +47,7 @@ function Cart() {
       </Grid>
       <div className={classes.cardDetails}>
         <Typography variant="h4">
-          Subtotal: {cart.subtotal.formatted_with_symbol}
+          
         </Typography>
         <div>
           <Button
@@ -50,7 +62,7 @@ function Cart() {
           </Button>
           <Button
             component={Link}
-            to="/checkout"
+            onClick={()=>handlesubmit()}
             className={classes.checkoutButton}
             size="large"
             type="button"

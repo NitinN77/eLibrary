@@ -22,9 +22,6 @@ function Product({ product }) {
                     <Typography variant="h5" gutterBottom>
                         {product.name}
                     </Typography>
-                    <Typography variant="h5" gutterBottom>
-                        {product.price.formatted_with_symbol}
-                    </Typography>
                     {/* {product.categories.map((cat)=>(
                     <Typography variant="h5" gutterBottom>{cat.name}</Typography>
                     ))} */}

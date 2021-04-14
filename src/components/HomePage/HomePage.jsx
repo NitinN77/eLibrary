@@ -39,7 +39,7 @@ function HomePage() {
                 <div class="home__data">
                     <h1 class="home__title">Stuck <br />at home?<br /> <span class="home__title-color">Borrow a book today!</span></h1>
 
-                    <a href="/library" class="button">Browse</a>
+                    <a href="/library" class="button" style={{backgroundColor: "#b434eb"}}>Browse</a>
                 </div>
 
                 <div class="home__social">

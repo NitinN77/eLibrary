@@ -30,7 +30,7 @@ function Navbar() {
         <Toolbar>
           <Typography
             component={Link}
-            to="/"
+            to="/library"
             variant="h3"
             className={classes.title}
             color="inherit"

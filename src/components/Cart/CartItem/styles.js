@@ -21,5 +21,6 @@ export default makeStyles(() => ({
   },
   rembtn: {
     marginRight: '10px',
+    marginBottom: '10px',
   }
 }));
