@@ -15,7 +15,7 @@ function HomePage() {
         <header class="l-header">
             <nav class="nav bd-grid">
                 <div>
-                    <a href="#" class="nav__logo">Marlon</a>
+                    <a href="/" class="nav__logo">Marlon</a>
                 </div>
 
                 <div class="nav__menu" id="nav-menu">
@@ -171,9 +171,9 @@ function HomePage() {
         <footer class="footer">
             <p class="footer__title">Marlon</p>
             <div class="footer__social">
-                <a href="#" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+                <a href="/" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
+                <a href="/" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
+                <a href="/" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
             </div>
             <p>&#169; 2020 copyright all right reserved</p>
         </footer>

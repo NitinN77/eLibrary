@@ -14,10 +14,6 @@ import { commerce } from "../../../lib/commerce";
 function CartItem({ item }) {
   const [,dispatch] = useStateValue();
   const classes = useStyles();
-  const handleUpdateCartQuantity = async (productId, quantity) => {
-    const { cart } = await commerce.cart.update(productId, { quantity });
-    dispatch({ type: "SET_CART", data: cart });
-  };
 
   const handleRemoveFromCart = async (productId) => {
     const { cart } = await commerce.cart.remove(productId);

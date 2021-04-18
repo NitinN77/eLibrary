@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { commerce } from "./lib/commerce";
 import { useStateValue } from "./StateProvider";
 import { Products, Navbar, Cart, Checkout, Login } from "./components";
@@ -36,7 +36,6 @@ function App() {
       const rdata = await db.collection("users").doc(user.email).get();
       if(rdata.data()){
         dispatch({ type: "SET_BORROWED", data: rdata.data().books });
-
       }
     }
   };
@@ -56,7 +55,6 @@ function App() {
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
-      console.log("USER IS", authUser);
       if (authUser) {
         dispatch({ type: "SET_USER", data: authUser });
       } else {
@@ -64,7 +62,7 @@ function App() {
       }
     });
     fetchBorrowed();
-  }, [user]);
+  }, [user]);  // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     fetchProducts();

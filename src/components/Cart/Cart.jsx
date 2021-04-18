@@ -9,7 +9,7 @@ import { db } from '../../firebase'
 import { useHistory } from 'react-router-dom';
 
 function Cart() {
-  const [{ cart, user, checkoutToken }, dispatch ] = useStateValue();
+  const [{ cart, user }, dispatch ] = useStateValue();
   const classes = useStyles();
   let history = useHistory();
   const handleEmptyCart = async () => {

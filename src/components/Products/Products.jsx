@@ -19,7 +19,7 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import { IconButton, Badge } from "@material-ui/core";
-import { Mic, MicNone, Replay } from "@material-ui/icons";
+import { Mic, MicNone } from "@material-ui/icons";
 import { commerce } from "../../lib/commerce";
 import { useHistory } from 'react-router-dom';
 import { useSpeechSynthesis } from 'react-speech-kit';
@@ -156,6 +156,7 @@ export default function Products() {
                         <Checkbox onChange={() => handlefilterchange(cat)} />
                       }
                       label={cat}
+                      key={cat.id}
                     />
                   ))}
                 </FormGroup>
