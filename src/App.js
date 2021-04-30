@@ -8,7 +8,7 @@ import SignUp from "./components/SignUp/SignUp";
 import { auth, db } from "./firebase";
 import Borrowed from "./components/Borrowed/Borrowed";
 import HomePage from "./components/HomePage/HomePage";
-
+import './App.css'
 
 
 function App() {
