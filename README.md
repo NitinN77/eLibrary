@@ -17,4 +17,6 @@ react-speech-recognition
 react-speech
 
 
-![](https://i.imgur.com/zeZxCIC.png)
+![](https://i.imgur.com/8K1tTEK.png)
+
+![](https://i.imgur.com/ZtxZHbk.png)
