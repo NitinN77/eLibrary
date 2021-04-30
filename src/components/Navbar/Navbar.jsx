@@ -56,7 +56,7 @@ function Navbar() {
               
             </div>
           )}
-          { user ? (<Typography variant="h6" style={{padding: '23px'}}>{user.email}</Typography>) : null}
+          { user ? (<p style={{padding: '25px', fontSize: '20px'}}>{user.email}</p>) : null}
           {" "}
           { user ? 
           (<Button color="secondary" variant="contained" onClick={handleSignOut}>

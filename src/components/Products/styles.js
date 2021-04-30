@@ -11,7 +11,7 @@ export default makeStyles((theme) => ({
   },
   searchbar: {
     width: '98.7%',
-    marginTop: '30px',
+    marginTop: '20px',
   },
   filtersection: {
     width: '100%',
