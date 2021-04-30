@@ -8,6 +8,7 @@ function HomePage() {
   return(
     <>
     <div className="section1">
+      <h1 className="hed1"><p>Read your favorite textbooks</p> <p>and novels from the comfort of your home</p></h1>
       <Button variant="contained" type="submit" color="secondary" className="bt1">
         <p style={{fontSize: '20px'}}>
         <Link to="/library" style={{fontSize: '20px', textDecoration: 'none', color: 'white'}}> 

@@ -1,5 +1,6 @@
 .section1 {
-    background-image: url('../../assets/library1.jpg');
+    background: linear-gradient(to bottom, transparent, rgb(233, 117, 104)),
+    url("../../assets/library1.jpg");
     background-repeat: no-repeat;
     width: 99vw;
     margin-top: 80px;
@@ -11,8 +12,20 @@
     position: absolute;
     width: 150px;
     height: 50px;
-    top: 75%;
+    top: 85%;
     left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.hed1 {
+    font-size: 50px;
+    margin: 0;
+    position: absolute;
+    width: 700px;
+    top: 60%;
+    left: 20%;
+    color: white;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
