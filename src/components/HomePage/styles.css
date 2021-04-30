@@ -1,0 +1,18 @@
+.section1 {
+    background-image: url('../../assets/library1.jpg');
+    background-repeat: no-repeat;
+    width: 99vw;
+    margin-top: 80px;
+    height: 900px;
+}
+
+.bt1 {
+    margin: 0;
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    top: 75%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}

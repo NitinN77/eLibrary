@@ -28,16 +28,8 @@ function Navbar() {
     <div>
       <AppBar position="fixed" className={classes.appBar} color="inherit">
         <Toolbar>
-          <Typography
-            component={Link}
-            to="/library"
-            variant="h3"
-            className={classes.title}
-            color="inherit"
-          >
             <img src={logo} alt="" height="60px" className={classes.image} />
-            eLibrary
-          </Typography>
+            <h1><Link to="/" style={{textDecoration: 'none', color: 'black'}}>eLibrary</Link></h1>
           <div className={classes.grow} />
           {location.pathname === "/library" && (
             <div className={classes.button}>
