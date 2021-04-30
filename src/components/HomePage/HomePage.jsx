@@ -8,7 +8,7 @@ function HomePage() {
   return(
     <>
     <div className="section1">
-      <Button variant="contained" type="submit" color="primary" className="bt1">
+      <Button variant="contained" type="submit" color="secondary" className="bt1">
         <p style={{fontSize: '20px'}}>
         <Link to="/library" style={{fontSize: '20px', textDecoration: 'none', color: 'white'}}> 
         Browse
