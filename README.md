@@ -4,19 +4,34 @@
 
 ### Technologies Used:
 
+#### Front-end:
+
 React
 
-Commerce.js
-
 Material UI
-
-Firebase 
 
 react-speech-recognition
 
 react-speech
 
 
+#### Back-end:
+
+Commerce.js
+
+Firebase 
+
+Flask
+
+Pandas
+
+NLTK
+
+scikit-learn
+
+
 ![](https://i.imgur.com/8K1tTEK.png)
 
 ![](https://i.imgur.com/ZtxZHbk.png)
+
+![](https://i.imgur.com/lXxFyLg.png)
