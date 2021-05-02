@@ -45,6 +45,9 @@ const Recommender = () => {
           {Object.values(apiret.title).map((title) => (
             <p>{title}</p>
           ))}
+          {Object.values(apiret.image_link).map((img) => (
+            <img src={img}/>
+          ))}
         </p>
       ) : (
         <div></div>
