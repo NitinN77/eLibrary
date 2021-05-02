@@ -6,20 +6,20 @@
 
 #### Front-end:
 
--React
--Material UI
--react-speech-recognition
--react-speech
+- React
+- Material UI
+- react-speech-recognition
+- react-speech
 
 
 #### Back-end:
 
--Commerce.js
--Firebase 
--Flask
--Pandas
--NLTK
--scikit-learn
+- Commerce.js
+- Firebase 
+- Flask
+- Pandas
+- NLTK
+- scikit-learn
 
 
 ![](https://i.imgur.com/8K1tTEK.png)
