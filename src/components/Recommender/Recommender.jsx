@@ -1,20 +1,24 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import axios from "axios";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button, Grid } from "@material-ui/core";
 
 const Recommender = () => {
   const [apiret, setApiret] = useState({});
   const [title, setTitle] = useState("Insurgent");
   const [genre, setGenre] = useState("Non-Fiction");
+  const [books, setBooks] = useState([]);
 
   const getRecomms = (e) => {
+    
     axios
       .get(`http://127.0.0.1:5000/?key1=${title}&key2=${genre}`)
       .then((res) => {
         const resp = res.data.data[2];
-        setApiret(resp);
+        setApiret(Object.values(resp));
+
       });
-    e.preventDefault()
+      console.log(apiret);
+      e.preventDefault()
   };
 
   return (
@@ -40,18 +44,15 @@ const Recommender = () => {
           Recommend
         </Button>
       </form>
-      {apiret.title ? (
-        <p>
-          {Object.values(apiret.title).map((title) => (
-            <p>{title}</p>
+      <Grid container justify="center" spacing={6} lg={12}>
+          {apiret.map(book => (
+              <Grid item>
+                  <h2>{book.title}</h2>
+                  <br />
+                  <img src={book.image_link} />
+              </Grid>
           ))}
-          {Object.values(apiret.image_link).map((img) => (
-            <img src={img}/>
-          ))}
-        </p>
-      ) : (
-        <div></div>
-      )}
+      </Grid>
     </div>
   );
 };

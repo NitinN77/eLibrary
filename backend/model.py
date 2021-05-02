@@ -85,6 +85,6 @@ def recommend(title, genre):
     sig = sig[1:6]
     movie_indices = [i[0] for i in sig]
     rec = data[['title', 'image_link']].iloc[movie_indices]
-    return rec.to_dict()
+    return rec.to_dict('index')
 
 recommend("Silence", "Non-Fiction")
