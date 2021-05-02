@@ -8,6 +8,7 @@ import SignUp from "./components/SignUp/SignUp";
 import { auth, db } from "./firebase";
 import Borrowed from "./components/Borrowed/Borrowed";
 import HomePage from "./components/HomePage/HomePage";
+import Recommender from './components/Recommender/Recommender';
 import './App.css'
 
 
@@ -81,6 +82,9 @@ function App() {
           </Route>
           <Route exact path="/library">
             <Products />
+          </Route>
+          <Route exact path="/recommend">
+            <Recommender />
           </Route>
           <Route exact path="/cart">
             <Cart />
