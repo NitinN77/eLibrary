@@ -45,13 +45,13 @@ const Recommender = () => {
         </Button>
       </form>
       <Grid container justify="center" spacing={6} lg={12}>
-          {apiret.map(book => (
+          {apiret.length ? apiret.map(book => (
               <Grid item>
                   <h2>{book.title}</h2>
                   <br />
                   <img src={book.image_link} />
               </Grid>
-          ))}
+          )) : <div></div>}
       </Grid>
     </div>
   );
