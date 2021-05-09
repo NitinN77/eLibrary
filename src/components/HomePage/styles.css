@@ -29,3 +29,20 @@
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
+@media screen and (max-width:480px) {
+    .section1{
+        width: 110vw;
+        height: 800px;
+    }
+    .bt1 {
+        top: 70%;
+        margin-top: '20px';
+    }
+    .hed1 {
+        left: 52%;
+        width: 400px;
+        font-size: 40px;
+    }
+}
+

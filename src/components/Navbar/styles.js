@@ -17,9 +17,16 @@ export default makeStyles((theme) => ({
     alignItems: 'center',
     display: 'flex',
     textDecoration: 'none',
+    color: 'black',
+    ['@media (max-width:480px)']:{
+      fontSize: '12px'
+    }
   },
   image: {
     marginRight: '10px',
+    ['@media (max-width:480px)']:{
+      width: '40px'
+    }
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -65,5 +72,12 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       width: '20ch',
     },
+  },
+  email: {
+    padding: '25px',
+    fontSize: '20px',
+    ['@media (max-width:480px)']: {
+      fontSize: '13px',
+    }
   },
 }));

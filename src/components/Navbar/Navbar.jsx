@@ -15,6 +15,7 @@ import { auth } from '../../firebase';
 
 import useStyles from "./styles";
 
+
 function Navbar() {
   const classes = useStyles();
   const location = useLocation();
@@ -29,7 +30,7 @@ function Navbar() {
       <AppBar position="fixed" className={classes.appBar} color="inherit">
         <Toolbar>
             <img src={logo} alt="" height="60px" className={classes.image} />
-            <h1><Link to="/" style={{textDecoration: 'none', color: 'black'}}>eLibrary</Link></h1>
+            <h1><Link to="/" className={classes.title}>eLibrary</Link></h1>
           <div className={classes.grow} />
           {location.pathname === "/library" && (
             <div className={classes.button}>
@@ -56,10 +57,10 @@ function Navbar() {
               
             </div>
           )}
-          { user ? (<p style={{padding: '25px', fontSize: '20px'}}>{user.email}</p>) : null}
+          { user ? (<p className={classes.email}>{user.email}</p>) : null}
           {" "}
           { user ? 
-          (<Button color="secondary" variant="contained" onClick={handleSignOut}>
+          (<Button color="secondary" variant="contained" onClick={handleSignOut} className={classes.btn}>
             Sign Out
           </Button>)
            : 
