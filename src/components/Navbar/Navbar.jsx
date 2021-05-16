@@ -12,17 +12,23 @@ import { useStateValue } from "../../StateProvider";
 import logo from "../../assets/navlogo.svg";
 import { Link, useLocation } from "react-router-dom";
 import { auth } from '../../firebase';
-
+import { commerce } from "../../lib/commerce";
 import useStyles from "./styles";
 
 
 function Navbar() {
   const classes = useStyles();
   const location = useLocation();
-  const [{ cart, user, borrowed }] = useStateValue();
+  const [{ cart, user, borrowed },dispatch] = useStateValue();
+
+  const handleEmptyCart = async () => {
+    const { cart } = await commerce.cart.empty();
+    dispatch({type: 'SET_CART', data: cart});
+  };
 
   const handleSignOut = () => {
     auth.signOut();
+    handleEmptyCart();
   }
 
   return (

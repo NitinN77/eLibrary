@@ -21,7 +21,7 @@ function App() {
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
     dispatch({ type: "SET_PRODUCTS", data: data });
-    console.log('prods', data);
+
   };
 
   const fetchCart = async () => {
@@ -38,7 +38,7 @@ function App() {
     if (user) {
       const rdata = await db.collection("users").doc(user.email).get();
       if(rdata.data()){
-        dispatch({ type: "SET_BORROWED", data: rdata.data().books });
+        dispatch({ type: "SET_BORROWED", data: rdata.data().borrowed });
       }
     }
   };

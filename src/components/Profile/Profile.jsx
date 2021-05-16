@@ -3,6 +3,7 @@ import useStyles from "./styles";
 import readsvg from "../../assets/undraw_Reading.svg";
 import {Tabs, Tab, AppBar} from '@material-ui/core'
 import { useStateValue } from "../../StateProvider";
+import {Link} from 'react-router-dom'
 
 
 const Profile = () => {
@@ -44,7 +45,7 @@ const Profile = () => {
             <TabPanel value={value} index={1}>Item 2 Detail</TabPanel>
             <TabPanel value={value} index={2}>Item 3 Detail</TabPanel>
         </div>
-        : null }
+        : <div><h3>You must <Link to="/login">Log in</Link></h3></div> }
 
     </>
   );

@@ -19,7 +19,9 @@ function Borrowed() {
     db
     .collection('users')
     .doc(user.email)
-    .delete()
+    .set({
+      borrowed: [],
+    })
     alert("Books Returned")
   }
 

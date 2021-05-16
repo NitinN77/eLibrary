@@ -22,9 +22,10 @@ function Cart() {
     .collection('users')
     .doc(user.email)
     .set({
-        books: cart.line_items,
+        borrowed: cart.line_items,
     })
     history.push('/library')
+    handleEmptyCart()
   }
 
   const EmptyCart = () => (
