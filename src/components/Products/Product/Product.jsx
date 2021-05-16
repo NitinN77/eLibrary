@@ -24,7 +24,7 @@ function Product({ product }) {
                         {product.name}
                     </Typography>
                 </div>
-                {product.categories.map(cat => <Chip key={cat.id} label={cat.name} style={{marginRight: "10px", marginBottom: '12px'}}/>)}
+                {product.categories.map(cat => <Chip color="secondary" key={cat.id} label={cat.name} style={{marginRight: "10px", marginBottom: '12px'}}/>)}
                 <br />
                 <Typography dangerouslySetInnerHTML = {{__html: product.description}} variant="body2" color="textSecondary" />
             </CardContent>
