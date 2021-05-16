@@ -118,7 +118,7 @@ export default function Products() {
   const { transcript } = useSpeechRecognition({ commands });
 
   return (
-    <main className={classes.content}>
+    <main className={classes.content} >
       <div className={classes.toolbar} />
       <SearchBar
         value={searchTerm}
@@ -134,7 +134,7 @@ export default function Products() {
         {transcript}
       </div>
       <br />
-      <Grid container spacing={3}>
+      <Grid container spacing={3} md={12}>
         <Grid item container justify="center" spacing={3} lg={10}>
           {dynamicSearch().map((product) => (
             <Grid item key={product.id} lg={12}>
@@ -142,7 +142,7 @@ export default function Products() {
             </Grid>
           ))}
         </Grid>
-        <Grid item container lg={2}>
+        <Grid item lg={2}>
           <Card className={classes.filtersection}>
             <CardContent>
               <FormControl component="fieldset" className={classes.formControl}>

@@ -4,6 +4,7 @@ import { AddShoppingCart } from '@material-ui/icons';
 import useStyles from './styles';
 import { commerce } from "../../../lib/commerce";
 import { useStateValue } from "../../../StateProvider";
+import Chip from '@material-ui/core/Chip';
 
 function Product({ product }) {
     const classes = useStyles();
@@ -22,10 +23,9 @@ function Product({ product }) {
                     <Typography variant="h5" gutterBottom>
                         {product.name}
                     </Typography>
-                    {/* {product.categories.map((cat)=>(
-                    <Typography variant="h5" gutterBottom>{cat.name}</Typography>
-                    ))} */}
                 </div>
+                {product.categories.map(cat => <Chip key={cat.id} label={cat.name} style={{marginRight: "10px", marginBottom: '12px'}}/>)}
+                <br />
                 <Typography dangerouslySetInnerHTML = {{__html: product.description}} variant="body2" color="textSecondary" />
             </CardContent>
             <CardActions disableSpacing className={classes.cardActions}>

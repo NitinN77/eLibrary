@@ -20,6 +20,7 @@ function App() {
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
     dispatch({ type: "SET_PRODUCTS", data: data });
+    console.log('prods', data);
   };
 
   const fetchCart = async () => {
