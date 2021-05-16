@@ -10,6 +10,7 @@ import Borrowed from "./components/Borrowed/Borrowed";
 import HomePage from "./components/HomePage/HomePage";
 import Recommender from './components/Recommender/Recommender';
 import './App.css'
+import Profile from "./components/Profile/Profile";
 
 
 function App() {
@@ -102,6 +103,9 @@ function App() {
           </Route>
           <Route exact path="/login">
             <Login />
+          </Route>
+          <Route exact path="/profile">
+            <Profile />
           </Route>
           <Route exact path="/signup">
             <SignUp />
