@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 import useStyles from "./styles";
 import readsvg from "../../assets/undraw_Reading.svg";
-import {Tabs, Tab, Appbar, AppBar} from '@material-ui/core'
-
+import {Tabs, Tab, AppBar} from '@material-ui/core'
+import { useStateValue } from "../../StateProvider";
 
 
 const Profile = () => {
   const classes = useStyles();
+  const [{ user }, ] = useStateValue();
   const [value, setValue] = useState(0)
   const handleTabs = (e,val) => {
       setValue(val)
@@ -30,7 +31,8 @@ const Profile = () => {
           />
         </div>
       </div>
-      <div>
+      {user? 
+        <div>
             <AppBar position="static">
                 <Tabs value={value} onChange={handleTabs}>
                     <Tab label="item 1" />
@@ -42,6 +44,8 @@ const Profile = () => {
             <TabPanel value={value} index={1}>Item 2 Detail</TabPanel>
             <TabPanel value={value} index={2}>Item 3 Detail</TabPanel>
         </div>
+        : null }
+
     </>
   );
 };

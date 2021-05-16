@@ -78,6 +78,8 @@ export default makeStyles((theme) => ({
     fontSize: '20px',
     ['@media (max-width:480px)']: {
       fontSize: '13px',
-    }
+    },
+    textDecoration: 'none',
+    color: 'black',
   },
 }));

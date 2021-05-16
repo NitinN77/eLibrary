@@ -57,7 +57,7 @@ function Navbar() {
               
             </div>
           )}
-          { user ? (<p className={classes.email}>{user.email}</p>) : null}
+          { user ? (<Link to="/profile" className={classes.email}>{user.email}</Link>) : <p className={classes.email} style={{color: '#f0f0f0'}}>dummy</p>}
           {" "}
           { user ? 
           (<Button color="secondary" variant="contained" onClick={handleSignOut} className={classes.btn}>
