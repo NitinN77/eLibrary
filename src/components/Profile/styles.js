@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 export default makeStyles(() => ({
     bg: {
       backgroundColor: '#eb7734',
-      marginTop: '82px',
+      marginTop: '81px',
     },
     root: {
       height: '300px',
