@@ -18,9 +18,7 @@ const Profile = () => {
   const fetchbhistory = async () => {
     let rdata = await db.collection("bhistory").doc(user.email).get();
     rdata = rdata.data().history
-    console.log('radat', rdata);
     setBhistory(rdata)
-    console.log('bhist', bhistory);
   }
 
   useEffect(() => {
@@ -54,7 +52,7 @@ const Profile = () => {
             <AppBar position="static">
                 <Tabs value={value} onChange={handleTabs}>
                     <Tab label="BORROWING HISTORY" />
-                    <Tab label="item 2" />
+                    <Tab label="PREFERRED TAGS" />
                     <Tab label="item 3" />
                 </Tabs>
             </AppBar>
@@ -62,7 +60,7 @@ const Profile = () => {
               {bhistory && bhistory.map(book => (<p>{book.name}</p>))}
             </TabPanel>
             <TabPanel value={value} index={1}>
-
+          
             </TabPanel>
             <TabPanel value={value} index={2}>
               
