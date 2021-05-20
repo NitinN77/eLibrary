@@ -18,7 +18,7 @@ import { useStateValue } from "../../StateProvider";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-import { IconButton, Badge } from "@material-ui/core";
+import { IconButton, Badge, Button } from "@material-ui/core";
 import { Mic, MicNone } from "@material-ui/icons";
 import { commerce } from "../../lib/commerce";
 import { useHistory } from 'react-router-dom';
@@ -125,13 +125,21 @@ export default function Products() {
         onChange={(val) => setSearchTerm(val)}
         className={classes.searchbar}
       />
-      <div style={{marginTop: '15px'}}>
+      <div style={{marginTop: '15px', display: 'flex', justifyContent: 'space-between'}}>
         <IconButton color="inherit" onClick={() => {handleListening()}}>
           <Badge>
             {listening ? <Mic /> : <MicNone />}
           </Badge>
         </IconButton>
         {transcript}
+        <Button 
+        variant="contained"
+        type="button"
+        color="primary"
+        style={{marginRight: '47px'}}
+        >
+          Recommender
+        </Button>
       </div>
       <br />
       <Grid container spacing={3} md={12}>

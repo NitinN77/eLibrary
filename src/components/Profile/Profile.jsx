@@ -1,18 +1,35 @@
-import React, {useState} from "react";
+import {React, useState, useEffect} from "react";
 import useStyles from "./styles";
 import readsvg from "../../assets/undraw_Reading.svg";
 import {Tabs, Tab, AppBar} from '@material-ui/core'
 import { useStateValue } from "../../StateProvider";
 import {Link} from 'react-router-dom'
-
+import { db } from '../../firebase'
 
 const Profile = () => {
   const classes = useStyles();
   const [{ user }, ] = useStateValue();
-  const [value, setValue] = useState(0)
+  const [value, setValue] = useState(0);
+  const [bhistory, setBhistory] = useState([]);
   const handleTabs = (e,val) => {
       setValue(val)
   }
+
+  const fetchbhistory = async () => {
+    let rdata = await db.collection("bhistory").doc(user.email).get();
+    rdata = rdata.data().history
+    console.log('radat', rdata);
+    setBhistory(rdata)
+    console.log('bhist', bhistory);
+  }
+
+  useEffect(() => {
+    if (user) {
+      fetchbhistory();
+    }
+  }, [user])
+
+
   return (
     <>
       <div className={classes.bg}>
@@ -36,14 +53,20 @@ const Profile = () => {
         <div>
             <AppBar position="static">
                 <Tabs value={value} onChange={handleTabs}>
-                    <Tab label="item 1" />
+                    <Tab label="BORROWING HISTORY" />
                     <Tab label="item 2" />
                     <Tab label="item 3" />
                 </Tabs>
             </AppBar>
-            <TabPanel value={value} index={0}>Item 1 Detail</TabPanel>
-            <TabPanel value={value} index={1}>Item 2 Detail</TabPanel>
-            <TabPanel value={value} index={2}>Item 3 Detail</TabPanel>
+            <TabPanel value={value} index={0}>
+              {bhistory && bhistory.map(book => (<p>{book.name}</p>))}
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+              
+            </TabPanel>
         </div>
         : <div><h3>You must <Link to="/login">Log in</Link></h3></div> }
 

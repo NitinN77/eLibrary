@@ -17,13 +17,24 @@ function Cart() {
     dispatch({type: 'SET_CART', data: cart});
   };
 
-  const handlesubmit = () => {
+  const handlesubmit = async () => {
     db
-    .collection('users')
+    .collection('borrowed')
     .doc(user.email)
     .set({
         borrowed: cart.line_items,
     })
+
+    let rdata = await db.collection("bhistory").doc(user.email).get();
+    rdata = rdata.data().history
+    cart.line_items.map(book => rdata.push(book))
+
+    db.collection('bhistory')
+    .doc(user.email)
+    .set({
+        history: rdata,
+    })
+
     history.push('/library')
     handleEmptyCart()
   }

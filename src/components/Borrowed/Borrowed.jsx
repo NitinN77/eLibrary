@@ -17,7 +17,7 @@ function Borrowed() {
 
   const returnborrowed = () => {
     db
-    .collection('users')
+    .collection('borrowed')
     .doc(user.email)
     .set({
       borrowed: [],

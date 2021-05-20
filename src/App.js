@@ -36,7 +36,7 @@ function App() {
 
   const fetchBorrowed = async () => {
     if (user) {
-      const rdata = await db.collection("users").doc(user.email).get();
+      const rdata = await db.collection("borrowed").doc(user.email).get();
       if(rdata.data()){
         dispatch({ type: "SET_BORROWED", data: rdata.data().borrowed });
       }

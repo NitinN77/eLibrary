@@ -56,7 +56,7 @@ function Navbar() {
                 aria-label="show cart items"
                 color="inherit"
               >
-                <Badge badgeContent={borrowed.length} color="secondary">
+                <Badge badgeContent={borrowed && borrowed.length} color="secondary">
                   <Book />
                 </Badge>
               </IconButton>
