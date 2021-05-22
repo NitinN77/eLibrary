@@ -63,9 +63,9 @@ const Recommender = () => {
         >
           Recommend
         </Button>
-      <Grid container justify="center" spacing={6} lg={12}>
+      <Grid container justify="center" spacing={9}>
           {apiret.length ? apiret.map(book => (
-              <Grid item>
+              <Grid item key={book.id} lg={4}>
                   <h2>{book.title}</h2>
                   <br />
                   <img src={book.image_link} />
