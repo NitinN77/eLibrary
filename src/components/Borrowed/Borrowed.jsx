@@ -16,6 +16,7 @@ function Borrowed() {
   const classes = useStyles();
   const [{ borrowed, user }] = useStateValue();
   const [btime, setBtime] = useState(null)
+  
 
   const returnborrowed = () => {
     db
@@ -30,8 +31,8 @@ function Borrowed() {
   const fetchtime = async () => {
     let rdata = await db.collection("userdata").doc(user.email).get();
     rdata = rdata.data().borrowedTime
-    const d = rdata - new Date()
-    setBtime(d)
+    const diff = new Date() - new Date(rdata)
+    setBtime((diff/36e5)%24)
   }
 
   useEffect(() => {

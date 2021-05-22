@@ -39,7 +39,7 @@ function Cart() {
     db.collection('userdata')
     .doc(user.email)
     .set({
-      borrowedTime: new Date(),
+      borrowedTime: (new Date()).getTime(),
     })
 
     history.push('/library')

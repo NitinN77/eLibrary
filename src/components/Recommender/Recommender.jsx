@@ -1,6 +1,7 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import axios from "axios";
-import { TextField, Button, Grid } from "@material-ui/core";
+import { TextField, Button, Grid, Select, MenuItem, FormControl, InputLabel} from "@material-ui/core";
+import { Autocomplete } from "@material-ui/lab"
 
 const Recommender = () => {
   const [apiret, setApiret] = useState({});
@@ -21,29 +22,47 @@ const Recommender = () => {
       e.preventDefault()
   };
 
+  useEffect(() => {
+    console.log();
+  }, [])
+  
+
   return (
     <div style={{ marginTop: "120px", marginLeft: "50px" }}>
       <h1>Recommender</h1>
-      <form noValidate style={{ marginTop: "30px", marginBottom: "30px" }}>
-        <TextField id="outlined-basic" label="Title" variant="outlined" onChange={(e) => setTitle(e.target.value)}/>
-        <TextField
-          style={{ marginLeft: "30px" }}
-          id="outlined-basic"
+      <div style={{ marginTop: "30px", marginBottom: "20px", display: 'flex', flexDirection: 'row'}}>
+      <FormControl noValidate  variant="outlined" style={{marginRight: '20px'}}>
+      <InputLabel id="demo-simple-select-outlined-label">Genre</InputLabel>
+       <Select
+          style={{ width: '280px'}}
+          labelId="demo-simple-select-outlined-label"
+          id="demo-simple-select-outlined"
           label="Genre"
-          variant="outlined"
           onChange={(e) => setGenre(e.target.value)}
-        />
-        <p></p>
-        <Button
-          style={{ marginTop: "30px" }}
+        >
+          <MenuItem value="Non-Fiction">Non-Fiction</MenuItem>
+          <MenuItem value="Business">Business</MenuItem>
+        </Select>
+      </FormControl>
+      <Autocomplete
+
+      id="combo-box-demo"
+      options={require('../../static/books')}
+      style={{ width: 300 }}
+      value={title}
+      onChange={(e, value) => setTitle(value)}
+      renderInput={(params) => <TextField {...params} label="Title" variant="outlined" />}
+      />
+      </div>
+      <Button
           variant="contained"
           type="submit"
           color="primary"
           onClick={(e) => getRecomms(e)}
+          style={{marginBottom: '20px'}}
         >
           Recommend
         </Button>
-      </form>
       <Grid container justify="center" spacing={6} lg={12}>
           {apiret.length ? apiret.map(book => (
               <Grid item>
