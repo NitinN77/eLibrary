@@ -21,7 +21,7 @@ import SpeechRecognition, {
 import { IconButton, Badge, Button } from "@material-ui/core";
 import { Mic, MicNone } from "@material-ui/icons";
 import { commerce } from "../../lib/commerce";
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link} from 'react-router-dom';
 import { useSpeechSynthesis } from 'react-speech-kit';
 
 const categories = [
@@ -138,7 +138,9 @@ export default function Products() {
         color="primary"
         style={{marginRight: '47px'}}
         >
+          <Link to="/recommend" style={{textDecoration: 'none', color: 'white'}}>
           Recommender
+          </Link>
         </Button>
       </div>
       <br />

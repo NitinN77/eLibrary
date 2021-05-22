@@ -6,7 +6,6 @@ export default makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
-    backgroundImage: `url(${bg})`,
   },
   root: {
     flexGrow: 1,
