@@ -54,7 +54,7 @@ const Profile = () => {
             <AppBar position="static">
                 <Tabs value={value} onChange={handleTabs}>
                     <Tab label="BORROWING HISTORY" />
-                    <Tab label="PREFERRED TAGS" />
+                    <Tab label="item 2" />
                     <Tab label="item 3" />
                 </Tabs>
             </AppBar>

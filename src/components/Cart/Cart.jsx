@@ -36,10 +36,14 @@ function Cart() {
         history: rdata,
     })
 
+    var bDate = new Date();
+    bDate.setDate(bDate.getDate() + 10); 
+
+
     db.collection('userdata')
     .doc(user.email)
     .set({
-      borrowedTime: (new Date()).getTime(),
+      borrowedTime: bDate.getTime(),
     })
 
     history.push('/library')

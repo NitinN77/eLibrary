@@ -11,6 +11,23 @@ import {
 import useStyles from "./styles";
 import { db } from '../../firebase'
 
+function timeDiffCalc(dateFuture, dateNow) {
+  let diffInMilliSeconds = Math.abs(dateFuture - dateNow) / 1000;
+  const days = Math.floor(diffInMilliSeconds / 86400);
+  diffInMilliSeconds -= days * 86400;
+  const hours = Math.floor(diffInMilliSeconds / 3600) % 24;
+  diffInMilliSeconds -= hours * 3600;
+  const minutes = Math.floor(diffInMilliSeconds / 60) % 60;
+  diffInMilliSeconds -= minutes * 60;
+  let difference = '';
+  if (days > 0) {
+    difference += (days === 1) ? `${days} day, ` : `${days} days, `;
+  }
+  difference += (hours === 0 || hours === 1) ? `${hours} hour, ` : `${hours} hours, `;
+  difference += (minutes === 0 || hours === 1) ? `${minutes} minutes` : `${minutes} minutes`; 
+  return difference;
+}
+
 
 function Borrowed() {
   const classes = useStyles();
@@ -31,15 +48,14 @@ function Borrowed() {
   const fetchtime = async () => {
     let rdata = await db.collection("userdata").doc(user.email).get();
     rdata = rdata.data().borrowedTime
-    const diff = new Date() - new Date(rdata)
-    setBtime((diff/36e5)%24)
+    const diff = new Date(rdata)
+    setBtime(timeDiffCalc(diff ,new Date()))
   }
 
   useEffect(() => {
     if(user){
       fetchtime()
     }
-    console.log(btime);
   }, [user])
 
   return (
@@ -47,7 +63,9 @@ function Borrowed() {
     <div style={{ marginTop: "100px" }}>
     <div className={classes.topsection}>
     <Typography variant="h4" style={{paddingBottom: '50px', marginLeft: '50px'}}>Borrowed</Typography>
-    <Typography>{btime ? <h1>{btime.toString()}</h1> : null}</Typography>
+    <Typography>{btime ? <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+      <h4>Time left before return: </h4><h2>{btime.toString()}</h2>
+      </div> : null}</Typography>
     <Button color="secondary" variant="contained" onClick={()=>{returnborrowed()}} style={{height: '40px', marginRight: "76px"}}>
               Return All 
     </Button>
