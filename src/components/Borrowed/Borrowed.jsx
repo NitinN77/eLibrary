@@ -49,6 +49,10 @@ function Borrowed() {
     let rdata = await db.collection("userdata").doc(user.email).get();
     rdata = rdata.data().borrowedTime
     const diff = new Date(rdata)
+    if(diff - new Date() <= 0) {
+      returnborrowed()
+      alert('Your borrow time has ended and the books were returned')
+    }
     setBtime(timeDiffCalc(diff ,new Date()))
   }
 
@@ -56,6 +60,7 @@ function Borrowed() {
     if(user){
       fetchtime()
     }
+    
   }, [user])
 
   return (
