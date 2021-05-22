@@ -18,7 +18,9 @@ const Profile = () => {
   const fetchbhistory = async () => {
     let rdata = await db.collection("bhistory").doc(user.email).get();
     rdata = rdata.data().history
-    setBhistory(rdata)
+    let a = rdata.map(b => b.name)
+    a = a.filter((item, i, ar) => ar.indexOf(item) === i);
+    setBhistory(a)
   }
 
   useEffect(() => {
@@ -57,7 +59,7 @@ const Profile = () => {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-              {bhistory && bhistory.map(book => (<p>{book.name}</p>))}
+              {bhistory && bhistory.map(book => (<p>{book}</p>))}
             </TabPanel>
             <TabPanel value={value} index={1}>
           
