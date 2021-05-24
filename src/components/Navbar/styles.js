@@ -73,7 +73,7 @@ export default makeStyles((theme) => ({
       width: '20ch',
     },
   },
-  email: {
+  navitem: {
     padding: '25px',
     fontSize: '20px',
     ['@media (max-width:480px)']: {
@@ -82,4 +82,33 @@ export default makeStyles((theme) => ({
     textDecoration: 'none',
     color: 'black',
   },
+  pronav: {
+    fonWeight: 'bold',
+    fontSize: '14px',
+    textTransform: 'uppercase',
+    textDecoration: 'none',
+    color: '#031D44',
+    padding: '20px 0px',
+    margin: '0px 20px',
+    display: 'inline-block',
+    position: 'relative',
+    opacity: 0.75,
+    '&:hover': {
+      opacity: 1,
+    },
+    '&::before': {
+      height: '0%',
+      width: '100%',
+      bottom: '0px',
+      transition: '300ms',
+      height: '5px',
+      content: "",
+      position: 'absolute',
+      backgroundColor: '#031D44',
+    },
+    '&:hover::before': {
+      height: '5px',
+    }
+  }
+
 }));

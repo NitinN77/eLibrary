@@ -1,0 +1,36 @@
+.nav-link {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #000;
+    padding: 20px 0px;
+    margin: 0px 20px;
+    display: inline-block;
+    position: relative;
+    opacity: 0.75;
+    padding-bottom: 25px !important;
+    margin-bottom: -10px;
+    margin-left: 40px;
+  }
+  
+  .nav-link:hover {
+    opacity: 1;
+  }
+  
+  .nav-link::before {
+    transition: 100ms;
+    height: 5px;
+    content: "";
+    position: absolute;
+    background-color: #000;
+  }
+  
+  
+  .nav-link-grow-up::before {
+    height: 0%;
+    width: 100%;
+    bottom: 0px;
+  }
+  
+  .nav-link-grow-up:hover::before {
+    height: 5px;
+  }

@@ -14,7 +14,7 @@ import { Link, useLocation } from "react-router-dom";
 import { auth } from '../../firebase';
 import { commerce } from "../../lib/commerce";
 import useStyles from "./styles";
-
+import './navbar.css'
 
 function Navbar() {
   const classes = useStyles();
@@ -33,10 +33,18 @@ function Navbar() {
 
   return (
     <div>
+      <style>
+        
+      </style>
       <AppBar position="fixed" className={classes.appBar} color="inherit">
         <Toolbar>
-            <img src={logo} alt="" height="60px" className={classes.image} />
-            <h1><Link to="/" className={classes.title}>eLibrary</Link></h1>
+          <img src={logo} alt="" height="60px" className={classes.image} />
+          <h1><Link to="/" className={classes.title} >eLibrary</Link></h1>
+
+          <h3><Link to="/library" className="nav-link nav-link-grow-up">Browse</Link></h3>
+          <h3><Link to="/recommend" className="nav-link nav-link-grow-up">Recommend</Link></h3>
+          <h3><Link to="/news" className="nav-link nav-link-grow-up">News</Link></h3>
+
           <div className={classes.grow} />
           {location.pathname === "/library" && (
             <div className={classes.button}>
@@ -63,7 +71,7 @@ function Navbar() {
               
             </div>
           )}
-          { user ? (<Link to="/profile" className={classes.email}>{user.email}</Link>) : <p className={classes.email} style={{color: '#f0f0f0'}}>dummy</p>}
+          { user ? (<Link to="/profile" className={classes.navitem}>{user.email}</Link>) : <p className={classes.email} style={{color: '#f0f0f0'}}>dummy</p>}
           {" "}
           { user ? 
           (<Button color="secondary" variant="contained" onClick={handleSignOut} className={classes.btn}>

@@ -132,16 +132,6 @@ export default function Products() {
           </Badge>
         </IconButton>
         {transcript}
-        <Button 
-        variant="contained"
-        type="button"
-        color="primary"
-        style={{marginRight: '47px'}}
-        >
-          <Link to="/recommend" style={{textDecoration: 'none', color: 'white'}}>
-          Recommender
-          </Link>
-        </Button>
       </div>
       <br />
       <Grid container spacing={3} md={12}>
