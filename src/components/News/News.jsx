@@ -15,7 +15,7 @@ import {
 const News = () => {
   const classes = useStyles();
 
-  const [topic, setTopic] = useState("datascience");
+  const [topic, setTopic] = useState("dataanalytics");
   const [articles, setArticles] = useState([]);
 
   const fetchdata = () => {
@@ -62,36 +62,35 @@ const News = () => {
         <Button
           variant="contained"
           color="primary"
-          onClick={() => setTopic("programming")}
+          onClick={() => setTopic("engineering")}
         >
-          Programming
+          Engineering
         </Button>
       </div>
 
       <div className={classes.news}>
         <Grid container spacing={3}>
           {articles.map(art => (
-              <Grid item lg={3} key={art[2]}>
-              <Card >
-                <CardActionArea>
-                  <CardMedia
-                    image={art[1]}
-                    style={{height: 140, width: 160}}
-                  />
-                  <CardContent style={{height: '200px'}}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {art[0]}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
-                  <Button size="small" color="primary">
+              <Grid item lg={6} key={art[2]}>
+              <Card className={classes.root} variant="outlined">
+            <CardMedia className={classes.media} image={art[1]}/>
+
+            <div className={classes.cardContent1}>
+            <CardContent>
+                <div className={classes.cardContent}>
+                    <h2 style={{marginBottom: '10px'}}>
+                        {art[0]}
+                    </h2>
+                </div>                <br /><br />
+                <Button size="small" color="primary">
                     <a href={art[2]} style={{textDecoration: 'none', color: 'blue'}}
                     target="_blank" rel="noopener noreferrer"
                     >Learn more</a>
-                  </Button>
-                </CardActions>
-              </Card>
+              </Button>
+            </CardContent>
+            </div>
+            
+        </Card>
             </Grid>
           ))}
         </Grid>
