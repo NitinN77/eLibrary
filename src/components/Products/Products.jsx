@@ -143,7 +143,7 @@ export default function Products() {
             <CardContent>
               <FormControl component="fieldset" className={classes.formControl}>
                 <FormLabel component="legend" style={{ paddingBottom: "15px" }}>
-                  <h2>Filter</h2>
+                  <h2 style={{color: 'grey'}}>Filter</h2>
                 </FormLabel>
                 <FormGroup>
                   {categories.map((cat) => (

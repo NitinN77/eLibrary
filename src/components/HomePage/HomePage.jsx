@@ -17,7 +17,7 @@ function HomePage() {
         </Typography>
       </Button>
     </div>
-    <div className="section2">yes</div>
+    <div className="section2"></div>
     </>
   )
 }
