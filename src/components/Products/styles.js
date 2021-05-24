@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import bg from '../../assets/bg1t.png'
+
 
 export default makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,

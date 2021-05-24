@@ -61,16 +61,16 @@ function Borrowed() {
       fetchtime()
     }
     
-  }, [user])
+  }, [user]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
 
     <div style={{ marginTop: "100px" }}>
     <div className={classes.topsection}>
     <Typography variant="h4" style={{paddingBottom: '50px', marginLeft: '50px', color: 'white'}}>Borrowed</Typography>
-    <Typography>{btime ? <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+    {btime ? <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       <h4>Time left before return: </h4><h2>{btime.toString()}</h2>
-      </div> : null}</Typography>
+      </div> : null}
     <Button color="secondary" variant="contained" onClick={()=>{returnborrowed()}} style={{height: '40px', marginRight: "76px"}}>
               Return All 
     </Button>
@@ -78,7 +78,7 @@ function Borrowed() {
 
     <Grid item container justify="center" spacing={3} lg={12}>
       {borrowed.map((book) => (
-        <Card className={classes.root}>
+        <Card className={classes.root} key={book.name}>
           <CardMedia
             className={classes.media}
             image={book.media.source}

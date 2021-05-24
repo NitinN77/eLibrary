@@ -18,13 +18,13 @@ export default makeStyles((theme) => ({
     display: 'flex',
     textDecoration: 'none',
     color: 'black',
-    ['@media (max-width:480px)']:{
+    '@media (max-width:480px)':{
       fontSize: '12px'
     }
   },
   image: {
     marginRight: '10px',
-    ['@media (max-width:480px)']:{
+    '@media (max-width:480px)':{
       width: '40px'
     }
   },
@@ -76,9 +76,6 @@ export default makeStyles((theme) => ({
   navitem: {
     padding: '25px',
     fontSize: '20px',
-    ['@media (max-width:480px)']: {
-      fontSize: '13px',
-    },
     textDecoration: 'none',
     color: 'black',
   },
@@ -101,7 +98,6 @@ export default makeStyles((theme) => ({
       width: '100%',
       bottom: '0px',
       transition: '300ms',
-      height: '5px',
       content: "",
       position: 'absolute',
       backgroundColor: '#031D44',

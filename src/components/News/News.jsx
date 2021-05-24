@@ -18,18 +18,22 @@ const News = () => {
   const [topic, setTopic] = useState("datascience");
   const [articles, setArticles] = useState([]);
 
-  useEffect(() => {
+  const fetchdata = () => {
     axios
-      .get(`http://127.0.0.1:5000/news?topic=${topic}`)
-      .then((res) => {
-        let newsdata = res.data;
-        newsdata = newsdata.slice(0, 8);
-        setArticles(newsdata);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [topic]);
+    .get(`http://127.0.0.1:5000/news?topic=${topic}`)
+    .then((res) => {
+      let newsdata = res.data;
+      newsdata = newsdata.slice(0, 8);
+      setArticles(newsdata);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+
+  useEffect(() => {
+    fetchdata()
+  }, [topic]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className={classes.bg}>
@@ -67,7 +71,7 @@ const News = () => {
       <div className={classes.news}>
         <Grid container spacing={3}>
           {articles.map(art => (
-              <Grid item lg={3}>
+              <Grid item lg={3} key={art[2]}>
               <Card >
                 <CardActionArea>
                   <CardMedia

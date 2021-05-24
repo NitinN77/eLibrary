@@ -3,13 +3,12 @@ import {
   Grid,
   Card,
   CardContent,
-  Typography,
   FormControl,
   FormGroup,
   FormControlLabel,
   Checkbox,
   FormLabel,
-  IconButton, Badge, Button, Tooltip, Fab
+  Fab
 } from "@material-ui/core";
 import Product from "./Product/Product";
 import SearchBar from "material-ui-search-bar";
@@ -21,9 +20,8 @@ import SpeechRecognition, {
 } from "react-speech-recognition";
 import { Mic, MicNone } from "@material-ui/icons";
 import { commerce } from "../../lib/commerce";
-import { useHistory, Link} from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 import { useSpeechSynthesis } from 'react-speech-kit';
-import DeleteIcon from '@material-ui/icons/Delete';
 
 const categories = [
   "AI/ML",
@@ -130,7 +128,7 @@ export default function Products() {
         {transcript}
       </div>
       <br />
-      <Grid container spacing={3} md={12}>
+      <Grid container spacing={3} >
         <Grid item container justify="center" spacing={3} lg={10}>
           {dynamicSearch().map((product) => (
             <Grid item key={product.id} lg={12}>
@@ -152,7 +150,7 @@ export default function Products() {
                         <Checkbox onChange={() => handlefilterchange(cat)} />
                       }
                       label={cat}
-                      key={cat.id}
+                      key={cat}
                     />
                   ))}
                 </FormGroup>
@@ -161,13 +159,11 @@ export default function Products() {
           </Card>
         </Grid>
       </Grid>
-      <Tooltip title="Delete" style={{position: 'fixed', right: '15px', bottom: '20px'}}>
-        <IconButton color="inherit" onClick={() => {handleListening()}}>
-          <Fab color="primary" style={{height:80, width: 80}}>
-            {listening ? <Mic style={{height:40, width: 40}}/> : <MicNone style={{height:40, width: 40}}/>}
-          </Fab>
-        </IconButton>
-      </Tooltip>
+      <Fab color="primary" onClick={() => {handleListening()}}
+          style={{position: 'fixed', right: '15px', bottom: '20px', height:80, width: 80}}
+      >
+        {listening ? <Mic style={{height:40, width: 40}}/> : <MicNone style={{height:40, width: 40}}/>}
+      </Fab>
     </main>
   );
 }

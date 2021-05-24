@@ -10,7 +10,6 @@ import {
   CardContent,
   Typography,
   Grid,
-  Button,
 } from "@material-ui/core";
 import { useStateValue } from "../../StateProvider";
 import { Link } from "react-router-dom";
@@ -37,7 +36,7 @@ const Profile = () => {
     if (user) {
       fetchbhistory();
     }
-  }, [user]);
+  }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
@@ -55,6 +54,7 @@ const Profile = () => {
           <img
             src={readsvg}
             style={{ height: "250px", margin: "auto", paddingLeft: "1100px" }}
+            alt=""
           />
         </div>
       </div>
@@ -70,7 +70,7 @@ const Profile = () => {
           <TabPanel value={value} index={0}>
             <Grid item container justify="center" spacing={3} lg={12} style={{marginTop: '30px'}}> 
               {bhistory && bhistory.map((book) => (
-                <Card className={classes.cardroot}>
+                <Card className={classes.cardroot} key={Math.floor(Math.random() * 100000)}>
                   <CardMedia
                     className={classes.media}
                     image={book.media.source}

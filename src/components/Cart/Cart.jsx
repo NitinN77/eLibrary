@@ -7,7 +7,7 @@ import { useStateValue } from "../../StateProvider";
 import { commerce } from "../../lib/commerce";
 import { db } from '../../firebase'
 import { useHistory } from 'react-router-dom';
-var dateFormat = require('dateformat');
+
 
 function Cart() {
   const [{ cart, user }, dispatch ] = useStateValue();

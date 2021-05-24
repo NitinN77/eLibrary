@@ -4,7 +4,6 @@ import {
   Toolbar,
   IconButton,
   Badge,
-  Typography,
   Button,
 } from "@material-ui/core";
 import { ShoppingBasket, Book } from "@material-ui/icons";
@@ -71,7 +70,7 @@ function Navbar() {
               
             </div>
           )}
-          { user ? (<Link to="/profile" className={classes.navitem}>{user.email}</Link>) : <p className={classes.email} style={{color: '#f0f0f0'}}>dummy</p>}
+          { user ? (<Link to="/profile" className={classes.navitem}>{user.email}</Link>) : <p className={classes.navitem} style={{color: '#f0f0f0'}}>dummy</p>}
           {" "}
           { user ? 
           (<Button color="secondary" variant="contained" onClick={handleSignOut} className={classes.btn}>

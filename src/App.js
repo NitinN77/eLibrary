@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { commerce } from "./lib/commerce";
 import { useStateValue } from "./StateProvider";
-import { Products, Navbar, Cart, Checkout, Login } from "./components";
+import { Products, Navbar, Cart, Login } from "./components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignUp from "./components/SignUp/SignUp";
 
@@ -35,9 +35,6 @@ function timeDiffCalc(dateFuture, dateNow) {
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
-  const [order, setOrder] = useState({});
-  const [errorMessage, setErrorMessage] = useState("");
-
   const [open, setOpen] = useState(false);
   const [timeleft, setTimeleft] = useState('');
 
@@ -60,30 +57,12 @@ function App() {
     dispatch({ type: "SET_CART", data: cart });
   };
 
-  const refreshCart = async () => {
-    const newCart = await commerce.cart.refresh();
-    dispatch({ type: "SET_CART", data: newCart });
-  };
-
   const fetchBorrowed = async () => {
     if (user) {
       const rdata = await db.collection("borrowed").doc(user.email).get();
       if(rdata.data()){
         dispatch({ type: "SET_BORROWED", data: rdata.data().borrowed });
       }
-    }
-  };
-
-  const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
-    try {
-      const incomingOrder = await commerce.checkout.capture(
-        checkoutTokenId,
-        newOrder
-      );
-      setOrder(incomingOrder);
-      refreshCart();
-    } catch (error) {
-      setErrorMessage(error.data.error.message);
     }
   };
 

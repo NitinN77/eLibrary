@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import axios from "axios";
 import { TextField, Button, Grid, Select, MenuItem, FormControl, InputLabel} from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab"
@@ -7,7 +7,6 @@ const Recommender = () => {
   const [apiret, setApiret] = useState({});
   const [title, setTitle] = useState("Insurgent");
   const [genre, setGenre] = useState("Non-Fiction");
-  const [books, setBooks] = useState([]);
 
   const getRecomms = (e) => {
     
@@ -18,14 +17,8 @@ const Recommender = () => {
         setApiret(Object.values(resp));
 
       });
-      console.log(apiret);
       e.preventDefault()
   };
-
-  useEffect(() => {
-    console.log();
-  }, [])
-  
 
   return (
     <div style={{ marginTop: "120px", marginLeft: "50px" }}>
@@ -38,6 +31,7 @@ const Recommender = () => {
           id="demo-simple-select-outlined"
           label="Genre"
           onChange={(e) => setGenre(e.target.value)}
+          value={genre}
         >
           <MenuItem value="Non-Fiction">Non-Fiction</MenuItem>
           <MenuItem value="Business">Business</MenuItem>
@@ -64,10 +58,10 @@ const Recommender = () => {
         </Button>
       <Grid container justify="center" spacing={9}>
           {apiret.length ? apiret.map(book => (
-              <Grid item key={book.id} lg={4}>
+              <Grid item key={book.title} lg={4}>
                   <h2>{book.title}</h2>
                   <br />
-                  <img src={book.image_link} />
+                  <img src={book.image_link} alt=""/>
               </Grid>
           )) : <div></div>}
       </Grid>
