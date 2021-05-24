@@ -20,9 +20,9 @@ function Product({ product }) {
             <div className={classes.cardContent1}>
             <CardContent>
                 <div className={classes.cardContent}>
-                    <Typography variant="h5" gutterBottom>
+                    <h2 style={{marginBottom: '10px'}}>
                         {product.name}
-                    </Typography>
+                    </h2>
                 </div>
                 {product.categories.map(cat => <Chip color="secondary" key={cat.id} label={cat.name} style={{marginRight: "10px", marginBottom: '12px'}}/>)}
                 <br />

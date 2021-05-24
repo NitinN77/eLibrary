@@ -12,8 +12,9 @@ import Recommender from './components/Recommender/Recommender';
 import './App.css'
 import Profile from "./components/Profile/Profile";
 import News from "./components/News/News";
-import { Dialog, DialogTitle, DialogContent, DialogContentText, Button, DialogActions } from '@material-ui/core'
-import {Alert, AlertText} from '@material-ui/lab'
+import { Dialog } from '@material-ui/core'
+
+import { Alert } from '@material-ui/lab'
 
 function timeDiffCalc(dateFuture, dateNow) {
   let diffInMilliSeconds = Math.abs(dateFuture - dateNow) / 1000;

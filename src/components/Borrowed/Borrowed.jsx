@@ -67,7 +67,7 @@ function Borrowed() {
 
     <div style={{ marginTop: "100px" }}>
     <div className={classes.topsection}>
-    <Typography variant="h4" style={{paddingBottom: '50px', marginLeft: '50px'}}>Borrowed</Typography>
+    <Typography variant="h4" style={{paddingBottom: '50px', marginLeft: '50px', color: 'white'}}>Borrowed</Typography>
     <Typography>{btime ? <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       <h4>Time left before return: </h4><h2>{btime.toString()}</h2>
       </div> : null}</Typography>

@@ -13,10 +13,11 @@ export default makeStyles((theme) => ({
   searchbar: {
     width: '98.7%',
     marginTop: '20px',
+    boxShadow: '0px !important',
   },
   filtersection: {
     width: '100%',
-    height: '700px',
+    height: '580px',
   },
   formControl: {
     margin: theme.spacing(2),

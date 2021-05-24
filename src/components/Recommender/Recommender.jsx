@@ -29,7 +29,6 @@ const Recommender = () => {
 
   return (
     <div style={{ marginTop: "120px", marginLeft: "50px" }}>
-      <h1>Recommender</h1>
       <div style={{ marginTop: "30px", marginBottom: "20px", display: 'flex', flexDirection: 'row'}}>
       <FormControl noValidate  variant="outlined" style={{marginRight: '20px'}}>
       <InputLabel id="demo-simple-select-outlined-label">Genre</InputLabel>

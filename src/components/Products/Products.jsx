@@ -9,6 +9,7 @@ import {
   FormControlLabel,
   Checkbox,
   FormLabel,
+  IconButton, Badge, Button, Tooltip, Fab
 } from "@material-ui/core";
 import Product from "./Product/Product";
 import SearchBar from "material-ui-search-bar";
@@ -18,11 +19,11 @@ import { useStateValue } from "../../StateProvider";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-import { IconButton, Badge, Button } from "@material-ui/core";
 import { Mic, MicNone } from "@material-ui/icons";
 import { commerce } from "../../lib/commerce";
 import { useHistory, Link} from 'react-router-dom';
 import { useSpeechSynthesis } from 'react-speech-kit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const categories = [
   "AI/ML",
@@ -126,11 +127,6 @@ export default function Products() {
         className={classes.searchbar}
       />
       <div style={{marginTop: '15px', display: 'flex', justifyContent: 'space-between'}}>
-        <IconButton color="inherit" onClick={() => {handleListening()}}>
-          <Badge>
-            {listening ? <Mic /> : <MicNone />}
-          </Badge>
-        </IconButton>
         {transcript}
       </div>
       <br />
@@ -147,7 +143,7 @@ export default function Products() {
             <CardContent>
               <FormControl component="fieldset" className={classes.formControl}>
                 <FormLabel component="legend" style={{ paddingBottom: "15px" }}>
-                  <Typography variant="h5">Filter by Tags</Typography>
+                  <h2>Filter</h2>
                 </FormLabel>
                 <FormGroup>
                   {categories.map((cat) => (
@@ -165,6 +161,13 @@ export default function Products() {
           </Card>
         </Grid>
       </Grid>
+      <Tooltip title="Delete" style={{position: 'fixed', right: '15px', bottom: '20px'}}>
+        <IconButton color="inherit" onClick={() => {handleListening()}}>
+          <Fab color="primary" style={{height:80, width: 80}}>
+            {listening ? <Mic style={{height:40, width: 40}}/> : <MicNone style={{height:40, width: 40}}/>}
+          </Fab>
+        </IconButton>
+      </Tooltip>
     </main>
   );
 }
