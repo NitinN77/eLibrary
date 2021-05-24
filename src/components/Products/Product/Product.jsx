@@ -14,7 +14,7 @@ function Product({ product }) {
         dispatch({type: 'SET_CART', data: cart});
     };
     return (
-        <Card className={classes.root}>
+        <Card className={classes.root} variant="outlined">
             <CardMedia className={classes.media} image={product.media.source} title={product.name}/>
 
             <div className={classes.cardContent1}>

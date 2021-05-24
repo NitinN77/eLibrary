@@ -153,7 +153,7 @@ export default function Products() {
           ))}
         </Grid>
         <Grid item lg={2}>
-          <Card className={classes.filtersection}>
+          <Card className={classes.filtersection} variant="outlined">
             <CardContent>
               <FormControl component="fieldset" className={classes.formControl}>
                 <FormLabel component="legend" style={{ paddingBottom: "15px" }}>
