@@ -12,7 +12,7 @@ const Recommender = () => {
   const getRecomms = (e) => {
     
     axios
-      .get(`http://127.0.0.1:5000/?key1=${title}&key2=${genre}`)
+      .get(`http://127.0.0.1:5000/recommend?key1=${title}&key2=${genre}`)
       .then((res) => {
         const resp = res.data.data[2];
         setApiret(Object.values(resp));

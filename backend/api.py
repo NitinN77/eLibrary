@@ -21,12 +21,10 @@ def fetch():
         return notes
         
 
-if __name__ == "__main__":
-    app.run(debug=True)
 
 
 @app.route("/news", methods=['GET'])
-def fetch():
+def fetchnews():
     args = str(request.args['topic'])
     my_url = 'https://news.google.com/search?q=' + args + '&hl=en-IN&gl=IN&ceid=IN%3Aen'
     uClient = ureq(my_url)
@@ -45,3 +43,7 @@ def fetch():
     for i in range(len(links)):
         ret[i].append('https://news.google.com'+str(links[i].get('href'))[1:])
     return jsonify(ret) 
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

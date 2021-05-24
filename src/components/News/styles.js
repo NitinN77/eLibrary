@@ -4,4 +4,12 @@ export default makeStyles(() => ({
     bg: {
       marginTop: '81px',
     },
+    topics: {
+      padding: '50px',
+      display: 'flex',
+      justifyContent: 'space-evenly',
+    },
+    news:{
+      margin: '10px'
+    }
 }));
