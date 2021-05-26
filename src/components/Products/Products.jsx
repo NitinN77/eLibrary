@@ -22,6 +22,7 @@ import { Mic, MicNone } from "@material-ui/icons";
 import { commerce } from "../../lib/commerce";
 import { useHistory} from 'react-router-dom';
 import { useSpeechSynthesis } from 'react-speech-kit';
+import { auth } from '../../firebase';
 
 const categories = [
   "AI/ML",
@@ -81,6 +82,17 @@ export default function Products() {
     }
   }
 
+  const handleEmptyCart = async () => {
+    const { cart } = await commerce.cart.empty();
+    dispatch({type: 'SET_CART', data: cart});
+  };
+
+
+  const handleSignOut = () => {
+    auth.signOut();
+    handleEmptyCart();
+  }
+
   const commands = [
     {
       command: "filter by *",
@@ -90,11 +102,11 @@ export default function Products() {
       },
     },
     {
-      command: "clear cart",
+      command: "clear basket",
       callback: async () => {
         const { cart } = await commerce.cart.empty();
         dispatch({type: 'SET_CART', data: cart});
-        speak({ text: "Cart has been cleared"});
+        speak({ text: "Basket has been cleared"});
       },
     },
     {
@@ -117,6 +129,42 @@ export default function Products() {
       callback: (val) => {
         setSearchTerm(val)
         speak({ text: `Searching by ${val}`});
+      },
+    },
+    {
+      command: "show me the news",
+      callback: () => {
+        history.push('/news')
+        speak({ text: "Here is the latest tech news"});
+      },
+    },
+    {
+      command: "recommend me a book",
+      callback: () => {
+        history.push('/recommend')
+        speak({ text: "Enter your book details to get recommendations"});
+      },
+    },
+    {
+      command: "show me my profile",
+      callback: () => {
+        history.push('/profile')
+        speak({ text: "Here is your profile"});
+      },
+    },
+    {
+      command: "show me my basket",
+      callback: () => {
+        history.push('/cart')
+        speak({ text: "Here is your basket"});
+      },
+    },
+    {
+      command: "sign me out",
+      callback: () => {
+        handleSignOut()
+        history.push('/')
+        speak({ text: "You have been signed out"});
       },
     },
   ];
