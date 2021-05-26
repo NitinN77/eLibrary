@@ -24,6 +24,7 @@
 - Pandas
 - NLTK
 - scikit-learn
+- BeautifulSoup
 
 
 ![](https://i.imgur.com/zVe4IvU.png)
