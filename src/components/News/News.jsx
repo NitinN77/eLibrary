@@ -5,17 +5,14 @@ import {
   Button,
   Grid,
   Card,
-  CardActionArea,
-  CardActions,
   CardContent,
   CardMedia,
-  Typography
 } from "@material-ui/core";
 
 const News = () => {
   const classes = useStyles();
 
-  const [topic, setTopic] = useState("dataanalytics");
+  const [topic, setTopic] = useState("datascience");
   const [articles, setArticles] = useState([]);
 
   const fetchdata = () => {

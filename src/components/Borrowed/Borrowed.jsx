@@ -42,12 +42,23 @@ function Borrowed() {
     .set({
       borrowed: [],
     })
+
+    db.collection('userdata')
+    .doc(user.email)
+    .set({
+      borrowedTime: '',
+    })
     alert("Books Returned")
+
   }
 
   const fetchtime = async () => {
     let rdata = await db.collection("userdata").doc(user.email).get();
     rdata = rdata.data().borrowedTime
+    if (!rdata) {
+      setBtime('')
+      return
+    }
     const diff = new Date(rdata)
     if(diff - new Date() <= 0) {
       returnborrowed()
@@ -69,7 +80,7 @@ function Borrowed() {
     <div className={classes.topsection}>
     <Typography variant="h4" style={{paddingBottom: '50px', marginLeft: '50px', color: 'white'}}>Borrowed</Typography>
     {btime ? <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-      <h4>Time left before return: </h4><h2>{btime.toString()}</h2>
+      <h4>Time left before return: </h4><h2>{btime && btime.toString()}</h2>
       </div> : null}
     <Button color="secondary" variant="contained" onClick={()=>{returnborrowed()}} style={{height: '40px', marginRight: "76px"}}>
               Return All 
