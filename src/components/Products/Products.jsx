@@ -112,6 +112,13 @@ export default function Products() {
 
       },
     },
+    {
+      command: "search for *",
+      callback: (val) => {
+        setSearchTerm(val)
+        speak({ text: `Searching by ${val}`});
+      },
+    },
   ];
 
   const { transcript } = useSpeechRecognition({ commands });

@@ -14,12 +14,12 @@ export default makeStyles(() => ({
     },
     root: {
       maxWidth: '100%',
-      height: '200px',
+      height: '120px',
       display: 'flex',
     },
     media: {
       display: 'flex',
-      width: '300px',
+      width: '160px',
       justifyContent: 'flex-start'
     },
     cardActions: {

@@ -75,15 +75,10 @@ const News = () => {
             <div className={classes.cardContent1}>
             <CardContent>
                 <div className={classes.cardContent}>
-                    <h2 style={{marginBottom: '10px'}}>
-                        {art[0]}
-                    </h2>
+                    <a href={art[2]} style={{marginBottom: '10px', color: 'black'}}>
+                        <h3>{art[0]}</h3>
+                    </a>
                 </div>                <br /><br />
-                <Button size="small" color="primary">
-                    <a href={art[2]} style={{textDecoration: 'none', color: 'blue'}}
-                    target="_blank" rel="noopener noreferrer"
-                    >Learn more</a>
-              </Button>
             </CardContent>
             </div>
             
