@@ -26,8 +26,12 @@
 - scikit-learn
 
 
-![](https://i.imgur.com/8K1tTEK.png)
+![](https://i.imgur.com/zVe4IvU.png)
 
-![](https://i.imgur.com/ZtxZHbk.png)
+![](https://i.imgur.com/3RWAKMJ.png)
 
-![](https://i.imgur.com/lXxFyLg.png)
+![](https://i.imgur.com/tkw1yRY.png)
+
+![](https://i.imgur.com/DBQkVWw.png)
+
+![](https://i.imgur.com/RaYY56Z.png)
