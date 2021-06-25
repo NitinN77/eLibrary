@@ -7,9 +7,7 @@ const Recommender = () => {
   const [apiret, setApiret] = useState({});
   const [title, setTitle] = useState("Insurgent");
   const [genre, setGenre] = useState("Non-Fiction");
-
   const getRecomms = (e) => {
-    
     axios
       .get(`http://127.0.0.1:5000/recommend?key1=${title}&key2=${genre}`)
       .then((res) => {
@@ -19,7 +17,6 @@ const Recommender = () => {
       });
       e.preventDefault()
   };
-
   return (
     <div style={{ marginTop: "120px", marginLeft: "50px" }}>
       <div style={{ marginTop: "30px", marginBottom: "20px", display: 'flex', flexDirection: 'row'}}>

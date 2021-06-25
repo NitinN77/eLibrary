@@ -120,6 +120,7 @@ export default function Products() {
       command: "clear filters",
       callback: () => {
         setSelectedTags([])
+        setSearchTerm('')
         speak({ text: "Filters cleared"});
 
       },

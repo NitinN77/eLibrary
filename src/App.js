@@ -85,6 +85,7 @@ function App() {
       alert('Your borrow time has ended and the books were returned')
     }
     else if(diff - new Date() <= 7.776e8){
+      // 8.64e8 7.776e8
       handleClickOpen()
       setTimeleft(timeDiffCalc(diff, new Date()).toString())
     }
