@@ -17,7 +17,7 @@ const News = () => {
 
   const fetchdata = () => {
     axios
-    .get(`http://127.0.0.1:5000/news?topic=${topic}`)
+    .get(`https://elib-backend.herokuapp.com/news?topic=${topic}`)
     .then((res) => {
       let newsdata = res.data;
       newsdata = newsdata.slice(0, 8);

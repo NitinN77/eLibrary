@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 from flask import jsonify
 import nltk
+nltk.download('stopwords')
 from nltk.corpus import stopwords
 from sklearn.metrics.pairwise import linear_kernel
 from sklearn.feature_extraction.text import CountVectorizer
